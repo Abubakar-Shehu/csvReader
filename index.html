@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Number Extractor</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CSV Number Extractor</h1>
+            <p class="subtitle">Upload two CSV files and extract numbers from specific lines</p>
+        </header>
+
+        <main>
+            <div class="file-section">
+                <div class="file-input-group">
+                    <span class="label-text">CSV File 1</span>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="csvFile1" accept=".csv" />
+                        <button type="button" class="file-input-button" onclick="document.getElementById('csvFile1').click()">Choose File</button>
+                    </div>
+                    <span class="file-name" id="fileName1">No file selected</span>
+                    <div class="line-input-group">
+                        <label for="lines1">Line numbers (comma-separated, e.g., 1,3,5):</label>
+                        <input type="text" id="lines1" placeholder="1, 3, 5" />
+                    </div>
+                </div>
+
+                <div class="file-input-group">
+                    <span class="label-text">CSV File 2</span>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="csvFile2" accept=".csv" />
+                        <button type="button" class="file-input-button" onclick="document.getElementById('csvFile2').click()">Choose File</button>
+                    </div>
+                    <span class="file-name" id="fileName2">No file selected</span>
+                    <div class="line-input-group">
+                        <label for="lines2">Line numbers (comma-separated, e.g., 2,4,6):</label>
+                        <input type="text" id="lines2" placeholder="2, 4, 6" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="options-section">
+                <div class="option-group">
+                    <label for="delimiter">Delimiter:</label>
+                    <select id="delimiter">
+                        <option value=",">Comma (,)</option>
+                        <option value=";">Semicolon (;)</option>
+                        <option value="\t">Tab</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label>
+                        <input type="checkbox" id="hasHeaders" checked />
+                        First row contains headers
+                    </label>
+                </div>
+            </div>
+
+            <button id="processBtn" class="process-btn" disabled>Extract Numbers</button>
+
+            <div id="results" class="results-section" style="display: none;">
+                <h2>Results</h2>
+                <div id="resultsContent"></div>
+            </div>
+
+            <div id="error" class="error-message" style="display: none;"></div>
+        </main>
+    </div>
+
+    <script src="fileReader.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
